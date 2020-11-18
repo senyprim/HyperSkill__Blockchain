@@ -5,10 +5,7 @@ import java.util.List;
 
 public class BlockChain{
     private final List<Block> _listBlock;
-
-    public List<Block> getBlockChain(){
-        return _listBlock;
-    }
+    public  final int zeros;
 
     public int size(){
         return _listBlock.size();
@@ -18,21 +15,22 @@ public class BlockChain{
         String previousHash = size() > 0
                 ?getBlock(size()-1).hash
                 :"0";
-        _listBlock.add(new Block(size()+1,previousHash));
-    };
+        _listBlock.add(new Block(size()+1,previousHash, zeros));
+    }
 
     public Block getBlock(int index){
         return _listBlock.get(index);
     }
 
-    public BlockChain(){
+    public BlockChain(int zeros){
         _listBlock=new ArrayList<>();
+        this.zeros=zeros;
     }
 
     public boolean isValidate(){
         String previousHash="0";
         for(Block block:this._listBlock){
-            if (block.previousHash!=previousHash) return false;
+            if (!block.previousHash.equals(previousHash)) return false;
             previousHash=block.hash;
         }
         return true;
