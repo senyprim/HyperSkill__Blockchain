@@ -1,9 +1,10 @@
 package blockchain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BlockChain{
+public class BlockChain implements Serializable {
     private final List<Block> _listBlock;
     public  final int zeros;
 

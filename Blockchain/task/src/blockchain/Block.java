@@ -1,11 +1,12 @@
 package blockchain;
 
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
-public class Block{
+public class Block implements Serializable {
     private static byte[] getSHA256(String input) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
